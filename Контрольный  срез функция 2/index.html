@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<h2>Калькулятор</h2>
+
+<form id="calc">
+  <label for="val1">Первое значение:</label><br>
+  <input type="number" id="val1" name="val1"><br>
+  <label for="operator">Оператор:</label><br>
+  <select id="operator" name="operator">
+    <option value="+">Сложение</option>
+    <option value="-">Вычитание</option>
+    <option value="*">Умножение</option>
+    <option value="/">Деление</option>
+  </select><br>
+  <label for="val2">Второе значение:</label><br>
+  <input type="number" id="val2" name="val2"><br><br>
+  <input type="button" value="Рассчитать" onclick="calculate()">
+</form> 
+
+<p id="result"></p>
+
+<script>
+function calculate() {
+  var val1 = parseFloat(document.getElementById('val1').value);
+  var operator = document.getElementById('operator').value;
+  var val2 = parseFloat(document.getElementById('val2').value);
+  var result;
+
+  switch(operator) {
+    case '+':
+      result = val1 + val2;
+      break;
+    case '-':
+      result = val1 - val2;
+      break;
+    case '*':
+      result = val1 * val2;
+      break;
+    case '/':
+      if(val2 != 0) {
+        result = val1 / val2;
+      } else {
+        alert("Деление на ноль невозможно");
+        return;
+      }
+      break;
+    default:
+      return;
+  }
+
+  document.getElementById('result').innerHTML = "Результат: " + result;
+}
+</script>
+ 
+
+   <script src="script.js"></script> 
+</body>
+</html>
